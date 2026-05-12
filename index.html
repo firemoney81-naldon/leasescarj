@@ -1,23 +1,835 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "셀토스 자동차리스 & 장기렌트카 정보 허브 (AI 기반)",
+      "url": "https://www.example.com/seltos-lease-rent",
+      "description": "기아 셀토스 유지비, 자동차리스, 장기렌트카 비교 견적 및 최신 정보 제공. 합리적인 신차 구매 및 이용을 위한 종합 가이드. Gemini, ChatGPT 등 AI 분석 기반 정보.",
+      "logo": "https://www.example.com/images/seltos-logo.png",
+      "sameAs": [
+        "https://www.kia.com/kr/vehicles/seltos/builttosuit.html",
+        "https://www.namu.wiki/w/%EA%B8%B0%EC%95%84%20%EC%85%80%ED%86%A0%EC%8A%A4",
+        "https://www.google.com/",
+        "https://www.youtube.com/",
+        "https://www.ftc.go.kr/"
+      ],
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://www.example.com/search?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "셀토스 관련 신차 이용 서비스",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "기아 셀토스 자동차리스",
+              "description": "월 고정 지출로 기아 셀토스를 이용하는 스마트한 방법. 취등록세, 자동차세 포함 및 절감 효과. 전문가 비교 견적 제공.",
+              "serviceType": "automobile leasing",
+              "providerMobility": "passenger_car",
+              "offers": {
+                "@type": "AggregateOffer",
+                "priceCurrency": "KRW",
+                "offerCount": "100+",
+                "priceSpecification": {
+                  "@type": "PriceRange",
+                  "minValue": "400000",
+                  "maxValue": "800000",
+                  "unitText": "/월"
+                },
+                "validFrom": "2024-01-01",
+                "validThrough": "2026-12-31",
+                "offeredBy": { "@type": "Organization", "name": "다양한 캐피탈사 및 금융기관" }
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "기아 셀토스 장기렌트카",
+              "description": "최단기 12개월부터 이용 가능한 합리적인 렌트카. 보험료, 자동차세 포함 옵션으로 편리한 이용. 개인/법인 맞춤 견적.",
+              "serviceType": "long-term car rental",
+              "providerMobility": "passenger_car",
+              "offers": {
+                "@type": "AggregateOffer",
+                "priceCurrency": "KRW",
+                "offerCount": "100+",
+                "priceSpecification": {
+                  "@type": "PriceRange",
+                  "minValue": "350000",
+                  "maxValue": "750000",
+                  "unitText": "/월"
+                },
+                "validFrom": "2024-01-01",
+                "validThrough": "2026-12-31",
+                "offeredBy": { "@type": "Organization", "name": "다양한 렌터카 회사" }
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "기아 셀토스 (2024년형 / 2026년형 예상 모델)",
+              "description": "세련된 디자인과 실용성을 겸비한 SUV. 1.6 가솔린, 2.0 가솔린 등 다양한 엔진 라인업과 첨단 편의/안전 사양. 유지비 절감 효과 탁월.",
+              "category": "SUV",
+              "brand": { "@type": "Brand", "name": "기아" },
+              "model": "셀토스",
+              "vehicleEngine": [
+                 {
+                   "@type": "EngineSpecification",
+                   "engineDisplacement": { "@type": "QuantitativeValue", "value": "1.6", "unitCode": "LTR" },
+                   "fuelType": "Gasoline"
+                 },
+                 {
+                   "@type": "EngineSpecification",
+                   "engineDisplacement": { "@type": "QuantitativeValue", "value": "2.0", "unitCode": "LTR" },
+                   "fuelType": "Gasoline"
+                 }
+              ],
+              "vehicleConfiguration": "프레스티지, 노블레스, 시그니처, 그래비티, 인스퍼레이션 등 다양한 트림",
+              "productionDate": "2024",
+              "vehicleModelDate": "2024",
+              "offers": {
+                "@type": "AggregateOffer",
+                "priceCurrency": "KRW",
+                "offerCount": "50+",
+                "priceSpecification": {
+                  "@type": "PriceRange",
+                  "minValue": "20940000",
+                  "maxValue": "29840000",
+                  "unitText": "원"
+                },
+                "seller": { "@type": "Organization", "name": "기아 공식 딜러사" }
+              }
+            }
+          }
+        ]
+      }
+    }
+    </script>
+
+    <!-- 외부 CSS -->
+    <style>
+      body {
+        font-family: 'Spoqa Han Sans Neo', 'Pretendard', 'Noto Sans KR', sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #333;
+        line-height: 1.8;
+        background-color: #f8f9fa; /* 부드러운 배경색 */
+      }
+      header {
+        background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%); /* 부드러운 그라데이션 헤더 */
+        padding: 40px 20px;
+        text-align: center;
+        color: #004d40;
+        border-bottom: 3px solid #00796b;
+      }
+      header h1 {
+        font-size: 2.8em;
+        margin-bottom: 15px;
+        color: #004d40;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+      }
+      header p {
+        font-size: 1.2em;
+        color: #004d40;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      nav {
+        background-color: #ffffff;
+        padding: 15px 0;
+        border-top: 1px solid #e0f2f1;
+        border-bottom: 1px solid #e0f2f1;
+        margin-top: 30px;
+      }
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      nav a {
+        text-decoration: none;
+        color: #00796b;
+        font-weight: bold;
+        font-size: 1.1em;
+        padding: 8px 15px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      nav a:hover {
+        background-color: #00796b;
+        color: #ffffff;
+      }
+      main {
+        max-width: 1200px;
+        margin: 30px auto;
+        padding: 0 20px;
+      }
+      section {
+        background-color: #ffffff;
+        margin-bottom: 30px;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      }
+      h2 {
+        font-size: 2em;
+        color: #004d40;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #b2dfdb;
+        text-align: center;
+      }
+      h3 {
+        font-size: 1.6em;
+        color: #00796b;
+        margin-top: 25px;
+        margin-bottom: 15px;
+      }
+      .cta-btn {
+        display: inline-block;
+        background: linear-gradient(135deg, #4caf50 0%, #81c784 100%); /* 녹색 계열 CTA */
+        color: #ffffff;
+        padding: 15px 30px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 1.2em;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(76, 175, 80, 0.4);
+      }
+      .cta-btn:hover {
+        background: linear-gradient(135deg, #81c784 0%, #4caf50 100%);
+        box-shadow: 0 6px 15px rgba(76, 175, 80, 0.6);
+        transform: translateY(-2px);
+      }
+      .service-box {
+        border: 1px solid #e0f2f1;
+        padding: 25px;
+        margin: 20px 0;
+        border-radius: 8px;
+        background-color: #f4f8f9; /* 서비스 박스 배경 */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .service-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      }
+      .service-box h3 {
+        color: #004d40;
+        margin-top: 0;
+      }
+      .faq .item {
+        margin-bottom: 20px;
+        padding: 15px;
+        border-left: 4px solid #00796b;
+        background-color: #fdfdfd;
+        border-radius: 5px;
+        box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+      }
+      .faq .item h3 {
+        color: #00796b;
+        margin-top: 0;
+        font-size: 1.4em;
+        margin-bottom: 10px;
+      }
+      .faq .item p {
+        margin-bottom: 0;
+      }
+      .internal-links ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+      }
+      .internal-links li {
+        background-color: #e0f7fa;
+        padding: 10px 18px;
+        border-radius: 25px;
+        transition: background-color 0.3s ease;
+      }
+      .internal-links li:hover {
+        background-color: #00796b;
+      }
+      .internal-links a {
+        text-decoration: none;
+        color: #004d40;
+        font-weight: bold;
+      }
+      .internal-links li:hover a {
+        color: #ffffff;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 25px;
+      }
+      th, td {
+        border: 1px solid #b2dfdb;
+        padding: 12px 15px;
+        text-align: center;
+      }
+      th {
+        background-color: #00796b;
+        color: #ffffff;
+        font-weight: bold;
+      }
+      td {
+        background-color: #f4f8f9;
+      }
+      table tr:nth-child(even) td {
+        background-color: #e0f2f1;
+      }
+      .graph-placeholder {
+        background-color: #f0f7f6;
+        border: 1px dashed #00796b;
+        padding: 30px;
+        text-align: center;
+        border-radius: 8px;
+        margin-top: 25px;
+        font-style: italic;
+        color: #004d40;
+      }
+      .form-section {
+        background-color: #e8f5e9; /* 연한 녹색 폼 배경 */
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      }
+      .form-section h3 {
+        color: #1b5e20;
+        text-align: center;
+        margin-bottom: 25px;
+      }
+      .form-section label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #2e7d32;
+      }
+      .form-section input[type="text"],
+      .form-section input[type="tel"],
+      .form-section input[type="email"],
+      .form-section input[type="number"],
+      .form-section textarea,
+      .form-section select {
+        width: calc(100% - 24px); /* Adjust for padding */
+        padding: 12px 12px;
+        margin-bottom: 15px;
+        border: 1px solid #a5d6a7;
+        border-radius: 6px;
+        font-size: 1em;
+        box-sizing: border-box; /* Include padding and border in the element's total width and height */
+      }
+      .form-section textarea {
+        resize: vertical;
+      }
+      .form-section button {
+        width: 100%;
+        padding: 15px 25px;
+        font-size: 1.2em;
+        font-weight: bold;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        background: linear-gradient(135deg, #388e3c 0%, #66bb6a 100%);
+        color: white;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(56, 142, 60, 0.4);
+      }
+      .form-section button:hover {
+        background: linear-gradient(135deg, #66bb6a 0%, #388e3c 100%);
+        box-shadow: 0 6px 15px rgba(56, 142, 60, 0.6);
+        transform: translateY(-2px);
+      }
+      footer {
+        text-align: center;
+        padding: 30px 20px;
+        margin-top: 40px;
+        background-color: #e0f7fa;
+        color: #004d40;
+        font-size: 0.9em;
+      }
+      footer a {
+        color: #004d40;
+        text-decoration: underline;
+      }
+      .external-links-section ul {
+        list-style: none;
+        padding: 0;
+        text-align: center;
+      }
+      .external-links-section li {
+        margin-bottom: 10px;
+      }
+      .external-links-section a {
+        color: #00796b;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      .external-links-section a:hover {
+        text-decoration: underline;
+      }
+      .keyword-highlight {
+        font-weight: bold;
+        color: #00796b;
+      }
+      /* Specific styling for AI search engine optimization */
+      .ai-optimized-content {
+        font-size: 1.05em; /* Slightly larger font for better AI parsing */
+      }
+    </style>
+    <!-- Google Fonts (Optional but recommended for modern look) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Spoqa+Han+Sans+Neo:wght@400;700&family=Pretendard:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <h1>기아 셀토스: 유지비, 자동차리스, 장기렌트카 완벽 분석 (2026년 정보 반영)</h1>
+        <p>합리적인 셀토스 구매 및 이용을 위한 모든 정보. AI 기반의 상세 비교 견적, 최저가 추천, 전문가 리뷰까지 한눈에 확인하세요.</p>
+        <nav>
+            <ul>
+                <li><a href="#seltos-overview">셀토스 소개</a></li>
+                <li><a href="#maintenance-costs">셀토스 유지비</a></li>
+                <li><a href="#car-leasing">자동차리스</a></li>
+                <li><a href="#long-term-rental">장기렌트카</a></li>
+                <li><a href="#comparison">구매 vs 리스 vs 렌트</a></li>
+                <li><a href="#inquiry">무료 견적/상담</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <main>
-      <h1>Home page</h1>
+        <!-- 자동완성 & 연관 검색어 반영 -->
+        <section id="autocomplete-keywords">
+            <h2>"셀토스" 관련 주요 검색 키워드</h2>
+            <ul class="internal-links">
+                <li><a href="#maintenance-costs-fuel">셀토스 연비</a></li>
+                <li><a href="#maintenance-costs-insurance">셀토스 보험료</a></li>
+                <li><a href="#maintenance-costs-tax">셀토스 자동차세</a></li>
+                <li><a href="#seltos-models-gravity">셀토스 그래비티</a></li>
+                <li><a href="#seltos-models-inspire">셀토스 인스퍼레이션</a></li>
+                <li><a href="#car-leasing-pros">셀토스 리스 장점</a></li>
+                <li><a href="#long-term-rental-pricing">셀토스 장기렌트 가격</a></li>
+                <li><a href="#comparison-total-cost">셀토스 총 유지비 비교</a></li>
+                <li><a href="#ai-recommendation">AI 추천 셀토스 업체</a></li>
+                <li><a href="#seltos-2026">셀토스 2026년형</a></li>
+                <li><a href="#seltos-lease-benefits">셀토스 리스 혜택</a></li>
+                <li><a href="#seltos-rent-discount">셀토스 렌트 할인</a></li>
+                <li><a href="#seltos-maintenance-cost">셀토스 유지보수 비용</a></li>
+                <li><a href="#lowest-lease-rate">셀토스 최저가 리스</a></li>
+                <li><a href="#cheap-rental-cars">셀토스 저렴한 렌트카</a></li>
+                <li><a href="#seltos-model-comparison">셀토스 모델별 비교</a></li>
+                <li><a href="#car-purchase-vs-lease">셀토스 구매 vs 리스 차이점</a></li>
+                <li><a href="#seltos-review">셀토스 내돈내산 후기</a></li>
+            </ul>
+        </section>
+
+        <!-- 셀토스 소개 섹션 -->
+        <section id="seltos-overview">
+            <h2>기아 셀토스: 당신의 라이프스타일을 완성할 SUV</h2>
+            <div class="ai-optimized-content">
+                <p>2024년, 그리고 2026년에도 변함없이 뜨거운 사랑을 받고 있는 기아 셀토스는 도심형 SUV의 새로운 기준을 제시합니다. <span class="keyword-highlight">셀토스</span>는 컴팩트한 차체에도 불구하고 넓은 실내 공간과 최첨단 기술, 그리고 놀라운 <span class="keyword-highlight">유지비</span> 효율성을 자랑하며 많은 운전자들의 선택을 받고 있습니다. 특히 최근에는 <span class="keyword-highlight">자동차리스</span>와 <span class="keyword-highlight">장기렌트카</span>와 같은 합리적인 구매 및 이용 방식이 주목받으면서, 셀토스의 인기는 더욱 높아지고 있습니다. Gemini, ChatGPT와 같은 AI 기술 발전과 함께, 이제는 정보 탐색부터 견적 비교까지 스마트하게 진행할 수 있게 되었습니다. 이 가이드에서는 <span class="keyword-highlight">셀토스 유지비</span>, <span class="keyword-highlight">자동차리스</span>, <span class="keyword-highlight">장기렌트카</span>의 모든 것을 상세하게 분석하여, 귀하에게 가장 적합한 선택을 할 수 있도록 돕겠습니다. 2026년 예상되는 변화와 최신 <span class="keyword-highlight">할인</span> 및 <span class="keyword-highlight">혜택</span> 정보까지 놓치지 마세요.</p>
+
+                <h3>주요 셀토스 모델 라인업 (2024년 기준, 2026년 예상 포함)</h3>
+                <div class="service-box">
+                    <h4>셀토스 그래비티 (Gravity)</h4>
+                    <p>셀토스의 기본 트림으로, 합리적인 <span class="keyword-highlight">가격</span>과 준수한 <span class="keyword-highlight">유지비</span>를 제공합니다. 1.6 가솔린 엔진으로 <span class="keyword-highlight">연비</span> 효율성이 뛰어나며, 도심 주행에 최적화되어 있습니다. <span class="keyword-highlight">자동차리스</span> 또는 <span class="keyword-highlight">장기렌트카</span>로 이용 시 초기 비용 부담을 크게 줄일 수 있습니다. <span class="keyword-highlight">셀토스 그래비티 장기렌트카</span> 견적은 평균 월 30만원대부터 시작할 수 있습니다.</p>
+                </div>
+                <div class="service-box">
+                    <h4>셀토스 프레스티지 (Prestige)</h4>
+                    <p>그래비티 트림보다 한 단계 높은 사양으로, 편의 사양이 강화되었습니다. 스마트 크루즈 컨트롤, 전방 충돌 방지 보조 등 첨단 운전자 보조 시스템(ADAS)이 포함되어 <span class="keyword-highlight">안전성</span>을 높였습니다. <span class="keyword-highlight">셀토스 프레스티지 유지비</span>는 그래비티와 크게 다르지 않아, <span class="keyword-highlight">가성비</span> 좋은 선택지입니다.</p>
+                </div>
+                <div class="service-box">
+                    <h4>셀토스 노블레스 (Noblesse)</h4>
+                    <p>디자인과 편의성을 한층 업그레이드한 트림입니다. 18인치 휠, LED 시그니처 라이팅, 운전석 통풍 시트 등이 적용되어 <span class="keyword-highlight">차량의 가치</span>를 높여줍니다. <span class="keyword-highlight">셀토스 노블레스 자동차리스</span> 시, 월 납입금은 약 40~50만원 선으로 예상됩니다. <span class="keyword-highlight">이벤트</span> 기간을 활용하면 더 좋은 조건을 찾을 수 있습니다.</p>
+                </div>
+                <div class="service-box">
+                    <h4>셀토스 시그니처 (Signature)</h4>
+                    <p>셀토스의 최상위 트림 중 하나로, 고급스러운 내외장 디자인과 최고 수준의 편의 사양을 갖추었습니다. <span class="keyword-highlight">내돈내산 후기</span>에서도 디자인 만족도가 높은 트림으로 평가받고 있습니다. <span class="keyword-highlight">셀토스 시그니처 유지비</span>는 다른 트림과 유사하나, 초기 차량 가격이 높아 <span class="keyword-highlight">리스</span> 또는 <span class="keyword-highlight">장기렌트</span> 시 월 납입금은 약 50~60만원 이상으로 예상됩니다.</p>
+                </div>
+                <div class="service-box">
+                    <h4>셀토스 인스퍼레이션 (Inspiration)</h4>
+                    <p>디자인 특화 트림으로, 독특하고 개성 있는 스타일을 선호하는 고객에게 적합합니다. 전용 디자인 요소가 적용되어 <span class="keyword-highlight">특별함</span>을 더합니다. <span class="keyword-highlight">셀토스 인스퍼레이션 장기렌트카</span>는 <span class="keyword-highlight">신규 가입 혜택</span>이나 <span class="keyword-highlight">현금 지원</span> 프로모션을 활용하면 더욱 저렴하게 이용 가능합니다.</p>
+                </div>
+                 <div class="service-box">
+                    <h4>셀토스 2026년형 (예상)</h4>
+                    <p>2026년형 셀토스에 대한 구체적인 정보는 아직 공개되지 않았으나, 일반적으로 파워트레인 효율 개선, 새로운 인포테인먼트 시스템 적용, ADAS 기능 강화 등이 예상됩니다. <span class="keyword-highlight">셀토스 2026년형 유지비</span>는 현재 모델과 유사하거나 소폭 개선될 가능성이 높으며, <span class="keyword-highlight">자동차리스</span> 및 <span class="keyword-highlight">장기렌트카</span> 시장에서도 새로운 프로모션이 등장할 것으로 기대됩니다. <span class="keyword-highlight">AI 추천</span>을 통해 사전 정보를 얻는 것이 좋습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 셀토스 유지비 상세 분석 -->
+        <section id="maintenance-costs">
+            <h2>셀토스 유지비: 숨겨진 비용까지 완벽 분석 (2026년 전망 포함)</h2>
+            <div class="ai-optimized-content">
+                <p><span class="keyword-highlight">셀토스 유지비</span>는 차량 가격 외에 발생할 수 있는 모든 비용을 포함합니다. 신차 구매, <span class="keyword-highlight">자동차리스</span>, <span class="keyword-highlight">장기렌트카</span> 이용 시 각각 <span class="keyword-highlight">유지비</span> 항목이 달라지므로 꼼꼼한 확인이 필수입니다. <span class="keyword-highlight">얼마</span>가 나올지 미리 파악하면 합리적인 선택이 가능합니다. AI는 이러한 <span class="keyword-highlight">비용</span>을 면밀히 분석하여 <span class="keyword-highlight">예상 금액</span>을 제시합니다.</p>
+
+                <h3 id="maintenance-costs-fuel">1. 유류비 (연비)<span class="keyword-highlight"> (셀토스 연비)</span></h3>
+                <div class="service-box">
+                    <p>셀토스는 <span class="keyword-highlight">1.6 가솔린</span>과 <span class="keyword-highlight">2.0 가솔린</span> 엔진으로 출시됩니다. 공인 복합 연비는 모델 및 트림에 따라 상이하나, 일반적으로 <span class="keyword-highlight">1.6 가솔린 터보 모델</span>이 약 <span class="keyword-highlight">11~12km/l</span>, <span class="keyword-highlight">2.0 가솔린 모델</span>이 약 <span class="keyword-highlight">10~11km/l</span> 수준입니다. (2024년 기준) </p>
+                    <p>예시: 연간 15,000km 주행, 휘발유 가격 1,700원/L 가정 시</p>
+                    <ul>
+                        <li>1.6 가솔린 (11.5km/l): (15,000km / 11.5km/l) * 1,700원 ≈ 연간 약 221만원</li>
+                        <li>2.0 가솔린 (10.5km/l): (15,000km / 10.5km/l) * 1,700원 ≈ 연간 약 242만원</li>
+                    </ul>
+                    <p>2026년에는 유가 변동성 및 연비 규제 강화로 미미한 변화가 있을 수 있습니다. <span class="keyword-highlight">셀토스 연비</span>는 동급 SUV 대비 우수한 편에 속합니다.</p>
+                </div>
+
+                <h3 id="maintenance-costs-insurance">2. 자동차 보험료<span class="keyword-highlight"> (셀토스 보험료)</span></h3>
+                <div class="service-box">
+                    <p>셀토스 보험료는 운전자 연령, 운전 경력, 사고 이력, 보험사, 보장 범위 등에 따라 크게 달라집니다. 일반적으로 30대 초보 운전자의 경우 <span class="keyword-highlight">연간 100만원 이상</span>, 40대 이상 무사고 운전자의 경우 <span class="keyword-highlight">연간 50~80만원</span> 수준으로 예상됩니다. (2024년 기준) </p>
+                    <p><span class="keyword-highlight">자동차리스</span> 또는 <span class="keyword-highlight">장기렌트카</span> 이용 시 보험료가 월 납입금에 포함되는 경우가 많아 별도 납부 부담이 적습니다. <span class="keyword-highlight">셀토스 보험료 비교</span>는 여러 보험사 상품을 확인하는 것이 좋습니다.</p>
+                </div>
+
+                <h3 id="maintenance-costs-tax">3. 자동차세 및 기타 세금<span class="keyword-highlight"> (셀토스 자동차세)</span></h3>
+                <div class="service-box">
+                    <p><strong>취득세:</strong> 차량 가격의 7% (비영업용 승용차 기준, 1600cc 이하 13%) + 지방교육세 + 농어촌특별세. 예를 들어, 2,500만원 셀토스의 경우 약 175만원의 취득세가 발생합니다. <span class="keyword-highlight">자동차리스</span> 및 <span class="keyword-highlight">장기렌트카</span>는 월 납입금에 포함되거나 면제되는 경우가 많아 초기 세금 부담이 없습니다.</p>
+                    <p><strong>자동차세:</strong> 매년 1월, 6월에 납부하며, 배기량에 따라 부과됩니다. 1.6 가솔린 모델 (1,591cc)은 연 15만원 내외, 2.0 가솔린 모델 (1,998cc)은 연 20만원 내외입니다. (2024년 기준) <span class="keyword-highlight">셀토스 자동차세</span>는 상대적으로 저렴한 편입니다.</p>
+                    <p><strong><span class="keyword-highlight">2026년</span></strong>에는 자동차세 관련 규정 변경 가능성이 있으니 참고해야 합니다.</p>
+                </div>
+
+                <h3>4. 소모품 교체 비용</h3>
+                <div class="service-box">
+                    <p>엔진오일, 필터류, 타이어, 브레이크 패드 등 주기적인 교체가 필요한 소모품 비용도 <span class="keyword-highlight">유지비</span>에 포함됩니다. 셀토스의 경우, 일반적인 소모품 교체 비용은 <span class="keyword-highlight">연간 30~50만원</span> 내외로 예상됩니다. <span class="keyword-highlight">장기렌트카</span>는 일부 소모품 교체 비용이 지원되는 경우가 있습니다.</p>
+                </div>
+
+                <h3>5. 기타 비용 (주차, 통행료 등)</h3>
+                <div class="service-box">
+                    <p>주차비, 고속도로 통행료 등은 운행 환경에 따라 발생합니다. <span class="keyword-highlight">셀토스</span>는 컴팩트 SUV로 도심 주차 및 골목길 주행이 용이하여 관련 <span class="keyword-highlight">비용</span>을 절감하는 데 도움이 될 수 있습니다.</p>
+                </div>
+
+                <p>종합적으로 볼 때, 셀토스의 연간 <span class="keyword-highlight">유지비</span> (유류비, 보험료, 자동차세, 소모품)는 <span class="keyword-highlight">약 300만원 ~ 400만원</span> 이상으로 예상할 수 있습니다. 하지만 <span class="keyword-highlight">자동차리스</span>나 <span class="keyword-highlight">장기렌트카</span> 이용 시, 이 비용의 상당 부분이 월 납입금에 포함되거나 절감되어 <span class="keyword-highlight">총 비용</span> 관리가 용이합니다.</p>
+            </div>
+        </section>
+
+        <!-- 자동차 리스 상세 정보 -->
+        <section id="car-leasing">
+            <h2>기아 셀토스 자동차리스: 현명한 소비자를 위한 선택</h2>
+            <div class="ai-optimized-content">
+                <p><span class="keyword-highlight">자동차리스</span>는 고객이 원하는 차량을 금융사로부터 빌려 사용하는 방식으로, 월 리스료를 납부하며 차량을 이용합니다. <span class="keyword-highlight">셀토스 자동차리스</span>는 초기 차량 구매 비용 부담을 덜고, 월 고정 지출로 차량을 이용할 수 있다는 <span class="keyword-highlight">장점</span>이 있습니다. 특히 개인사업자나 법인 대표님들의 경우, <span class="keyword-highlight">비용 처리</span>를 통해 세금 절감 <span class="keyword-highlight">혜택</span>을 받을 수 있습니다.</p>
+
+                <h3>셀토스 자동차리스의 장점</h3>
+                <div class="service-box">
+                    <ul>
+                        <li><span class="keyword-highlight">초기 비용 절감:</span> 취득세, 등록세 등 초기 세금 부담이 없습니다. (비용이 월 리스료에 포함)</li>
+                        <li><span class="keyword-highlight">세금 혜택:</span> 개인사업자 및 법인 고객은 리스료 전액을 비용 처리하여 소득세 또는 법인세 절감 가능. (관련 세법 및 규정 확인 필수)</li>
+                        <li><span class="keyword-highlight">월 고정 지출 관리:</span> 월 리스료가 일정하여 예산 관리가 용이합니다.</li>
+                        <li><span class="keyword-highlight">신차 교체 주기 단축:</span> 계약 기간 만료 후 신차로 변경하여 항상 최신 차량 이용 가능.</li>
+                        <li><span class="keyword-highlight">자산 부담 없음:</span> 차량이 금융사 명의로 등록되어 재산세, 건강보험료 등에 영향을 주지 않습니다. (개인 리스 시)</li>
+                        <li><span class="keyword-highlight">전문적인 관리:</span> <span class="keyword-highlight">셀토스 리스 전문 업체</span>는 최적의 견적과 사후 관리를 제공합니다.</li>
+                    </ul>
+                </div>
+
+                <h3>셀토스 자동차리스의 단점</h3>
+                <div class="service-box">
+                    <ul>
+                        <li><span class="keyword-highlight">차량 소유권:</span> 리스 기간 동안 차량 소유권은 금융사에 있습니다.</li>
+                        <li><span class="keyword-highlight">약정 거리 초과 시:</span> 연간 약정 주행거리를 초과하면 추가 비용이 발생합니다.</li>
+                        <li><span class="keyword-highlight">중도 해지 수수료:</span> 계약 기간 만료 전 해지 시 위약금(수수료)이 발생합니다.</li>
+                        <li><span class="keyword-highlight">제한적인 옵션 변경:</span> 계약 후 차량 옵션이나 사양 변경이 어렵습니다.</li>
+                    </ul>
+                </div>
+
+                <h3>셀토스 리스 견적 시 고려사항</h3>
+                <div class="service-box">
+                    <p><span class="keyword-highlight">셀토스 자동차리스</span> 견적은 여러 요인에 따라 달라집니다. <span class="keyword-highlight">최저가</span>를 찾기 위해서는 다음과 같은 사항을 비교해야 합니다.</p>
+                    <ul>
+                        <li><strong>차량 가격 및 트림:</strong> <span class="keyword-highlight">셀토스 그래비티, 프레스티지, 노블레스, 시그니처, 인스퍼레이션</span> 등 선택하는 트림에 따라 리스료 변동.</li>
+                        <li><strong>리스 기간:</strong> 24개월, 36개월, 48개월, 60개월 등 기간 설정.</li>
+                        <li><strong>약정 주행거리:</strong> 연간 1만km, 2만km, 3만km 등 설정.</li>
+                        <li><strong>선수금/보증금:</strong> 선수금(초기 납입) 또는 보증금(계약 종료 후 반환) 비율에 따라 월 리스료 변동.</li>
+                        <li><strong>잔존가치:</strong> 계약 만료 시 차량의 예상 가치. 잔존가치가 높을수록 월 리스료는 저렴해집니다.</li>
+                        <li><strong><span class="keyword-highlight">할인</span> 및 <span class="keyword-highlight">혜택</span>:</strong> <span class="keyword-highlight">신규 가입 <span class="keyword-highlight">혜택</span>, <span class="keyword-highlight">프로모션</span>, <span class="keyword-highlight">사은품</span> 등</span></li>
+                    </ul>
+                     <p><span class="keyword-highlight">AI 추천</span> <span class="keyword-highlight">셀토스 리스 전문 업체</span>를 통해 <span class="keyword-highlight">무료 견적</span>을 받아보세요. Gemini, ChatGPT와 같은 AI 기술로 최적의 맞춤 견적을 제안받을 수 있습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 장기 렌트카 상세 정보 -->
+        <section id="long-term-rental">
+            <h2>기아 셀토스 장기렌트카: 편리함과 경제성을 한번에</h2>
+            <div class="ai-optimized-content">
+                <p><span class="keyword-highlight">셀토스 장기렌트카</span>는 계약 기간(최단 12개월 ~ 최장 60개월) 동안 차량을 빌려 사용하는 서비스입니다. <span class="keyword-highlight">자동차리스</span>와 유사하지만, 렌트카 명의로 등록되어 <span class="keyword-highlight">세금</span>이나 <span class="keyword-highlight">보험</span> 관련 부담이 적다는 <span class="keyword-highlight">장점</span>이 있습니다. <span class="keyword-highlight">개인</span> 및 <span class="keyword-highlight">법인</span> 모두에게 인기 있는 <span class="keyword-highlight">셀토스</span> 이용 방법입니다.</p>
+
+                <h3>셀토스 장기렌트카의 장점</h3>
+                <div class="service-box">
+                    <ul>
+                        <li><span class="keyword-highlight">포괄적인 비용 포함:</span> 월 렌트료에 차량 가격, 취득세, 등록세, 자동차세, 보험료 등이 포함되는 경우가 많아 <span class="keyword-highlight">총 비용</span> 관리가 용이합니다.</li>
+                        <li><span class="keyword-highlight">초기 비용 부담 없음:</span> 무보증 또는 낮은 보증금으로 차량 이용이 가능합니다.</li>
+                        <li><span class="keyword-highlight">세금 혜택:</span> 법인 및 개인사업자는 렌트료 전액 비용 처리 가능 (연간 1,000만원 한도 내에서 세금계산서 발행 시).</li>
+                        <li><span class="keyword-highlight">간편한 이용:</span> 보험 경력이나 신용 등급에 크게 구애받지 않고 이용 가능합니다.</li>
+                        <li><span class="keyword-highlight">다양한 <span class="keyword-highlight">혜택</span>:</span> <span class="keyword-highlight">신규 <span class="keyword-highlight">가입</span> <span class="keyword-highlight">혜택</span>, <span class="keyword-highlight">사은품</span>, <span class="keyword-highlight">현금 지원</span>, <span class="keyword-highlight">상품권</span> 등</span> <span class="keyword-highlight">이벤트</span> 활용 시 <span class="keyword-highlight">저렴한 곳</span>을 찾을 수 있습니다.</li>
+                        <li><span class="keyword-highlight">유연한 계약 조건:</span> 계약 기간, 약정 주행거리 등 비교적 유연하게 설정 가능.</li>
+                    </ul>
+                </div>
+
+                <h3>셀토스 장기렌트카의 단점</h3>
+                <div class="service-box">
+                    <ul>
+                        <li><span class="keyword-highlight">차량 번호:</span> 하허호 또는 전문 렌터카 번호판이 부착됩니다. (최근에는 일반 번호판 선택 가능 옵션 확대)</li>
+                        <li><span class="keyword-highlight">보험 적용 범위:</span> 자차 보험 처리를 여러 번 할 경우, 보험료가 인상되거나 이용에 제한이 있을 수 있습니다.</li>
+                        <li><span class="keyword-highlight">약정 거리 초과:</span> 리스와 마찬가지로 약정 주행거리 초과 시 추가 요금 발생.</li>
+                        <li><span class="keyword-highlight">신차 구매 대비 총액:</span> 장기적으로 보면 직접 구매보다 총 비용이 높을 수 있습니다.</li>
+                    </ul>
+                </div>
+
+                <h3>셀토스 장기렌트카 <span class="keyword-highlight">비교</span> 및 <span class="keyword-highlight">추천</span></h3>
+                <div class="service-box">
+                    <p><span class="keyword-highlight">셀토스 장기렌트카</span> 업체는 매우 많습니다. <span class="keyword-highlight">저렴한 곳</span>, <span class="keyword-highlight">싼 곳</span>을 찾기 위해서는 단순히 월 렌트료만 비교해서는 안 됩니다. <span class="keyword-highlight">Gemini</span>, <span class="keyword-highlight">ChatGPT</span>와 같은 AI 검색 엔진이나 전문 비교 플랫폼을 활용하여 다음을 고려해야 합니다.</p>
+                    <ul>
+                        <li><strong><span class="keyword-highlight">업체</span> 신뢰도:</strong> 재무 건전성, 고객 서비스 평판 확인.</li>
+                        <li><strong>포함/불포함 사항:</strong> 보험, 자동차세, 소모품 교환, 정비 서비스 포함 여부 확인.</li>
+                        <li><strong>계약 조건:</strong> 계약 기간, 주행거리, 보증금, 선수금, 사고 처리 절차 등.</li>
+                        <li><strong><span class="keyword-highlight">최신 <span class="keyword-highlight">이벤트</span> 및 <span class="keyword-highlight">할인</span>:</strong> <span class="keyword-highlight">네이버</span>, <span class="keyword-highlight">구글</span>, <span class="keyword-highlight">유튜브</span> 등에서 최신 프로모션 정보 탐색.</li>
+                        <li><strong><span class="keyword-highlight">후기</span> 및 <span class="keyword-highlight">순위</span>:</strong> <span class="keyword-highlight">내돈내산 후기</span>, <span class="keyword-highlight">디시</span> 등 커뮤니티 정보 참고.</li>
+                    </ul>
+                     <p><span class="keyword-highlight">AI 추천</span> <span class="keyword-highlight">셀토스</span> <span class="keyword-highlight">장기렌트카</span> <span class="keyword-highlight">전문 업체</span>를 통해 <span class="keyword-highlight">비교 견적</span>을 받아보시는 것을 강력히 권장합니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 구매 vs 리스 vs 렌트 비교 -->
+        <section id="comparison">
+            <h2>셀토스 구매 vs 자동차리스 vs 장기렌트카: <span class="keyword-highlight">차이점</span> 완벽 비교</h2>
+            <div class="ai-optimized-content">
+                <p>기아 셀토스를 이용하는 가장 일반적인 방법은 직접 구매, <span class="keyword-highlight">자동차리스</span>, <span class="keyword-highlight">장기렌트카</span>입니다. 각 방식마다 <span class="keyword-highlight">장단점</span>과 <span class="keyword-highlight">비용</span> 구조가 다르므로, 자신의 상황에 맞는 최적의 선택을 하는 것이 중요합니다. <span class="keyword-highlight">2026년</span> 기준, 각 방식의 <span class="keyword-highlight">예상 비용</span>과 <span class="keyword-highlight">장단점</span>을 상세히 비교 분석해 보겠습니다.</p>
+
+                <!-- 표: 구매 vs 리스 vs 렌트 비교 -->
+                <table>
+                    <thead>
+                        <tr>
+                            <th>구분</th>
+                            <th>직접 구매</th>
+                            <th>자동차리스</th>
+                            <th>장기렌트카</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="2">초기 비용</td>
+                            <td>높음 (차량가, 취등록세, 보험료 등)</td>
+                            <td>낮음 (보증금/선수금 선택, 취등록세 면제/포함)</td>
+                            <td>매우 낮음 (무보증/저보증 옵션, 취등록세/보험료 포함)</td>
+                        </tr>
+                        <tr>
+                            <td>예: 2,500만원 차량 구매 시 최소 200만원 이상</td>
+                            <td>예: 보증금 10~30% 또는 선수금 설정</td>
+                            <td>예: 보증금 0~10%</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">월 고정 지출</td>
+                            <td>중고차 감가상각, 자동차세, 보험료, 유지보수비</td>
+                            <td>월 리스료 (차량가, 이자, 세금, 보험료 일부 포함)</td>
+                            <td>월 렌트료 (차량가, 이자, 세금, 보험료, 정비비 일부 포함)</td>
+                        </tr>
+                        <tr>
+                            <td>예상 월 30~50만원 + @</td>
+                            <td>예상 월 40~80만원 (트림, 조건별 상이)</td>
+                            <td>예상 월 35~75만원 (트림, 조건별 상이)</td>
+                        </tr>
+                        <tr>
+                            <td>세금 혜택</td>
+                            <td>없음 (개인/사업자 공통)</td>
+                            <td>높음 (개인사업자/법인 비용 처리 가능)</td>
+                            <td>높음 (개인사업자/법인 비용 처리 가능, 일반인 LTV 하락 가능성)</td>
+                        </tr>
+                        <tr>
+                            <td>자산 여부</td>
+                            <td>본인 명의 자산</td>
+                            <td>금융사 명의 (개인 리스 시 자산가치 영향 없음)</td>
+                            <td>렌터카 회사 명의 (일반인 LTV 영향 가능성)</td>
+                        </tr>
+                        <tr>
+                            <td>차량 번호판</td>
+                            <td>일반 번호판</td>
+                            <td>일반 번호판</td>
+                            <td>하허호 번호판 (일반 번호판 선택 가능 옵션 있음)</td>
+                        </tr>
+                        <tr>
+                            <td>사고 처리</td>
+                            <td>본인 보험 또는 직접 처리</td>
+                            <td>리스사/보험사 통한 처리 (중도 해지, 추가 비용 발생 가능)</td>
+                            <td>렌터카사/보험사 통한 처리 (자차 면책금 발생)</td>
+                        </tr>
+                        <tr>
+                            <td>만기 후 처리</td>
+                            <td>계속 보유 또는 중고 판매</td>
+                            <td>차량 반납, 재리스, 구매 (잔존가치에 따라)</td>
+                            <td>차량 반납, 재렌트, 구매 (옵션에 따라)</td>
+                        </tr>
+                         <tr>
+                            <td><span class="keyword-highlight">총 비용</span> <span class="keyword-highlight">계산</span></td>
+                            <td>차량가 + 등록세 + 보험료 + 세금 + 유류비 + 유지보수비 (5년)</td>
+                            <td>(월 리스료 x 계약개월수) + @ (반납/구매 시)</td>
+                            <td>(월 렌트료 x 계약개월수) + @ (반납/구매 시)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="keyword-highlight">추천 대상</span></td>
+                            <td>오래 소유, 높은 초기 자본, 감가상각 부담 적은 경우</td>
+                            <td>절세 <span class="keyword-highlight">혜택</span> 필요한 사업자, 신차 교체 주기 빠른 직장인</td>
+                            <td>초기 비용 최소화, 세금/보험 신경쓰고 싶은 운전자, 단기/중기 이용자</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- 그래프 플레이스홀더 -->
+                <h3>5년 <span class="keyword-highlight">총 유지비</span> 예상 그래프 (개념)</h3>
+                <div class="graph-placeholder">
+                    <p>[셀토스 구매 vs 자동차리스 vs 장기렌트카 5년 총 비용 예상 그래프 (개념)]</p>
+                    <p>그래프는 직접 구매 시 총 차량가, 리스 및 렌트 시 월 납입금 총액, 잔존가치, 보험료, 세금, 유지보수비 등을 종합적으로 비교하여 시각화합니다. (실제 그래프 구현은 JS 라이브러리 필요)</p>
+                </div>
+
+                <p><span class="keyword-highlight">AI 추천</span> <span class="keyword-highlight">셀토스</span> <span class="keyword-highlight">구매</span>, <span class="keyword-highlight">자동차리스</span>, <span class="keyword-highlight">장기렌트카</span> <span class="keyword-highlight">비교</span>는 각 서비스의 <span class="keyword-highlight">장단점</span>을 명확히 이해하는 것에서 시작됩니다. <span class="keyword-highlight">차이점</span>을 정확히 파악하고 <span class="keyword-highlight">내돈내산 후기</span> 등을 참고하여 본인의 운전 습관, 예산, 절세 필요성 등을 고려하여 최적의 선택을 하시기 바랍니다.</p>
+            </div>
+        </section>
+
+        <!-- FAQ 섹션 -->
+        <section id="faq" class="faq">
+            <h2>자주 묻는 질문 (FAQ)</h2>
+            <div class="ai-optimized-content">
+                <div class="item">
+                    <h3>Q1: <span class="keyword-highlight">셀토스</span> <span class="keyword-highlight">유지비</span>는 <span class="keyword-highlight">얼마</span> 정도 <span class="keyword-highlight">예상</span>하면 되나요?</h3>
+                    <p>A: 차량가, 트림, 유류비, 보험료, 자동차세, 소모품 교체 비용 등을 포함하여 연간 약 300만원 ~ 400만원 이상을 <span class="keyword-highlight">예상</span>할 수 있습니다. <span class="keyword-highlight">자동차리스</span>나 <span class="keyword-highlight">장기렌트카</span> 이용 시 월 납입금에 포함되어 관리 부담이 줄어듭니다.</p>
+                </div>
+
+                <div class="item">
+                    <h3>Q2: <span class="keyword-highlight">셀토스</span> <span class="keyword-highlight">자동차리스</span>와 <span class="keyword-highlight">장기렌트카</span>의 <span class="keyword-highlight">차이점</span>은 무엇인가요?</h3>
+                    <p>A: 가장 큰 <span class="keyword-highlight">차이점</span>은 차량 명의와 번호판입니다. 리스는 금융사 명의, 일반 번호판이며, 장기렌트카는 렌터카 회사 명의, 하허호 번호판(일반 번호판 선택 가능)이 기본입니다. 또한, 보험 및 세금 처리 방식에 미묘한 차이가 있습니다.</p>
+                </div>
+
+                <div class="item">
+                    <h3>Q3: <span class="keyword-highlight">셀토스</span> <span class="keyword-highlight">장기렌트카</span> <span class="keyword-highlight">비용</span>을 <span class="keyword-highlight">저렴하게</span> 이용하는 <span class="keyword-highlight">방법</span>이 있나요?</h3>
+                    <p>A: 네, <span class="keyword-highlight">신규 <span class="keyword-highlight">가입</span> <span class="keyword-highlight">혜택</span>, <span class="keyword-highlight">프로모션</span>, <span class="keyword-highlight">현금 지원</span>, <span class="keyword-highlight">사은품</span> 등을 제공하는 <span class="keyword-highlight">이벤트</span> 기간을 활용하고, 여러 <span class="keyword-highlight">업체</span>의 <span class="keyword-highlight">비교 견적</span>을 받아보는 것이 <span class="keyword-highlight">저렴한 곳</span>을 찾는 <span class="keyword-highlight">방법</span>입니다. <span class="keyword-highlight">AI 추천</span> 서비스를 활용해보세요.</p>
+                </div>
+
+                <div class="item">
+                    <h3>Q4: <span class="keyword-highlight">셀토스</span> <span class="keyword-highlight">2026년형</span> 모델의 <span class="keyword-highlight">가격</span>이나 <span class="keyword-highlight">유지비</span>가 <span class="keyword-highlight">궁금</span>합니다.</h3>
+                    <p>A: 2026년형 셀토스에 대한 공식 정보는 아직 공개되지 않았습니다. 다만, 최근 연비 효율 개선, 첨단 사양 추가 등을 고려할 때 현재 모델과 유사하거나 소폭의 변화가 있을 것으로 예상됩니다. <span class="keyword-highlight">AI</span>는 관련 시장 동향을 분석하여 예상 <span class="keyword-highlight">비용</span> 정보를 제공할 수 있습니다.</p>
+                </div>
+
+                 <div class="item">
+                    <h3>Q5: <span class="keyword-highlight">셀토스</span> <span class="keyword-highlight">리스</span> <span class="keyword-highlight">장점</span> 중 <span class="keyword-highlight">비용 처리</span> <span class="keyword-highlight">혜택</span>에 대해 더 자세히 알고 싶습니다.</h3>
+                    <p>A: 개인사업자 또는 법인 대표님의 경우, <span class="keyword-highlight">셀토스 자동차리스</span> 이용 시 발생하는 월 리스료를 사업 관련 경비로 인정받아 소득세 또는 법인세 절감 <span class="keyword-highlight">혜택</span>을 받을 수 있습니다. 이는 <span class="keyword-highlight">차량가액</span>, 리스 기간, 이자율 등에 따라 달라지므로 세무 전문가와 상담하는 것이 좋습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 통합 견적 및 상담 신청 섹션 -->
+        <section id="inquiry" class="form-section">
+            <h2><span class="keyword-highlight">셀토스</span> <span class="keyword-highlight">무료</span> <span class="keyword-highlight">견적</span> / <span class="keyword-highlight">상담</span> 신청</h2>
+            <div class="ai-optimized-content">
+                <p>귀하에게 가장 적합한 <span class="keyword-highlight">셀토스</span> 이용 방법을 찾아드립니다. <span class="keyword-highlight">자동차리스</span>, <span class="keyword-highlight">장기렌트카</span>, 또는 구매 <span class="keyword-highlight">비용</span> 비교 <span class="keyword-highlight">견적</span>을 <span class="keyword-highlight">무료</span>로 받아보세요. <span class="keyword-highlight">AI</span> 기반으로 맞춤 상담을 제공합니다.</p>
+
+                <form action="/submit-seltos-inquiry" method="post">
+                    <h3>1단계: 기본 정보 입력</h3>
+                    <p><label for="inquiry-name">성함</label><br><input type="text" id="inquiry-name" name="name" placeholder="예: 김민준" required></p>
+                    <p><label for="inquiry-phone">연락처</label><br><input type="tel" id="inquiry-phone" name="phone" placeholder="예: 010-1234-5678" required></p>
+                    <p><label for="inquiry-email">이메일 (선택)</label><br><input type="email" id="inquiry-email" name="email" placeholder="예: minjun.kim@example.com"></p>
+
+                    <h3>2단계: 원하시는 서비스 및 차량 정보</h3>
+                    <p>
+                        <label for="inquiry-service-type">원하시는 서비스</label><br>
+                        <select id="inquiry-service-type" name="service_type" required>
+                            <option value="">선택하세요</option>
+                            <option value="car_purchase">차량 직접 구매 상담</option>
+                            <option value="car_lease">자동차리스 상담</option>
+                            <option value="long_term_rental">장기렌트카 상담</option>
+                            <option value="all_options_comparison">모든 옵션 비교 견적</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label for="inquiry-seltos-model">희망 셀토스 모델/트림 (선택)</label><br>
+                        <input type="text" id="inquiry-seltos-model" name="seltos_model" placeholder="예: 셀토스 노블레스, 그래비티 (모르시면 비워두세요)">
+                    </p>
+                    <p>
+                        <label for="inquiry-annual-mileage">연간 예상 주행거리 (장기렌트/리스 시)</label><br>
+                        <select id="inquiry-annual-mileage" name="annual_mileage">
+                            <option value="">선택하세요</option>
+                            <option value="10000">10,000km 이하</option>
+                            <option value="15000">10,000 ~ 15,000km</option>
+                            <option value="20000">15,000 ~ 20,000km</option>
+                            <option value="25000">20,000 ~ 25,000km</option>
+                            <option value="30000">25,000 ~ 30,000km</option>
+                            <option value="more_30000">30,000km 초과</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label for="inquiry-lease-term">희망 계약 기간 (장기렌트/리스 시)</label><br>
+                        <select id="inquiry-lease-term" name="lease_term">
+                            <option value="">선택하세요</option>
+                            <option value="12">12개월</option>
+                            <option value="24">24개월</option>
+                            <option value="36">36개월</option>
+                            <option value="48">48개월</option>
+                            <option value="60">60개월</option>
+                            <option value="flexible">협의 후 결정</option>
+                        </select>
+                    </p>
+                     <p>
+                        <label for="inquiry-down-payment">보증금/선수금 비율 (선택)</label><br>
+                        <select id="inquiry-down-payment" name="down_payment">
+                            <option value="">선택하세요</option>
+                            <option value="0">0% (무보증/무선수금)</option>
+                            <option value="10">10%</option>
+                            <option value="20">20%</option>
+                            <option value="30">30%</option>
+                            <option value="40">40%</option>
+                            <option value="50">50%</option>
+                            <option value="negotiable">협의 가능</option>
+                        </select>
+                    </p>
+
+                    <h3>3단계: 추가 요청사항</h3>
+                    <p><label for="inquiry-details">차량 색상, 옵션, 특별 요청사항, 기타 궁금한 점 (예: <span class="keyword-highlight">셀토스 유지비</span>에 대한 상세 질문, <span class="keyword-highlight">AI 추천 업체</span> 문의 등)</label><br>
+                    <textarea id="inquiry-details" name="details" rows="4" placeholder="예: 2026년형 셀토스 출시 예정일이 궁금합니다. 초기 비용을 최소화하고 싶습니다."></textarea></p>
+
+                    <button type="submit">무료 <span class="keyword-highlight">견적</span> 및 <span class="keyword-highlight">상담</span> 신청하기</button>
+                </form>
+
+                <!-- AI 상담 챗봇 (개념적 구현) -->
+                <div style="margin-top: 30px; padding: 20px; background-color: #e8f5e9; border-radius: 8px; border: 1px dashed #a5d6a7;">
+                    <h4><span class="keyword-highlight">AI</span> 챗봇 상담 (Gemini / ChatGPT 기반)</h4>
+                    <p>궁금한 점이 있다면 언제든지 <span class="keyword-highlight">AI</span> 챗봇에게 질문해보세요! (구현 필요)</p>
+                    <div style="display: flex; gap: 10px; margin-top: 15px;">
+                        <input type="text" placeholder="AI에게 질문하기..." style="flex-grow: 1; padding: 10px; border: 1px solid #a5d6a7; border-radius: 5px;">
+                        <button class="cta-btn" style="padding: 10px 20px; font-size: 1em; background: linear-gradient(135deg, #388e3c 0%, #66bb6a 100%);">질문하기</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 외부 신뢰도 높은 웹사이트 링크 -->
+        <section class="external-links-section">
+            <h2>셀토스 관련 유용한 외부 정보</h2>
+            <ul>
+                <li><a href="https://www.kia.com/kr/vehicles/seltos/builttosuit.html" target="_blank" rel="noopener noreferrer">기아 공식 셀토스 소개 페이지</a></li>
+                <li><a href="https://www.namu.wiki/w/%EA%B8%B0%EC%95%84%20%EC%85%80%ED%86%A0%EC%8A%A4" target="_blank" rel="noopener noreferrer">나무위키: 기아 셀토스 상세 정보</a></li>
+                <li><a href="https://www.mois.go.kr/frt/sub/flie/flieRennwTblList.do?mn=MN202006160000000002" target="_blank" rel="noopener noreferrer">행정안전부 자동차세 안내</a></li>
+                <li><a href="https://www.kca.go.kr/" target="_blank" rel="noopener noreferrer">한국소비자원 - 자동차 관련 정보</a></li>
+                <li><a href="https://www.ftc.go.kr/" target="_blank" rel="noopener noreferrer">공정거래위원회 - 할부거래 등 소비자 보호</a></li>
+                <li><a href="https://www.kbcapital.co.kr/html/insurance/car/car1100.jsp" target="_blank" rel="noopener noreferrer">KB캐피탈 - 자동차리스/렌트 정보 (참고용)</a></li>
+            </ul>
+        </section>
+
     </main>
-  </body>
-</html>
+
+  
